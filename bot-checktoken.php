@@ -22,12 +22,14 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $results = getLINEProfile($url1, $POST_HEADER1);
-        $text = $results['events'][0]['message']['displayName'];
+        $arrJson_profile = json_decode($results, true);
+        $displayName=$arrJson_profile['displayName'];
+        $pictureUrl=$arrJson_profile['pictureUrl'];
         
         $data = [
             'replyToken' => $reply_token,
             
-            'messages' => [['type' => 'text', 'text' => json_encode($text)]]
+            'messages' => [['type' => 'text', 'text' => json_encode($displayName)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -60,8 +62,7 @@ function getLINEProfile($url1,$post_header)
 	{
 		$ch = curl_init($url1);		
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($ch,CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");       
         curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         $result1 = curl_exec($ch);

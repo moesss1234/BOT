@@ -62,7 +62,7 @@ function getLINEProfile($url1,$post_header)
 	{
 		$ch = curl_init($url1);		
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");       
+        //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");       
         curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         $result1 = curl_exec($ch);

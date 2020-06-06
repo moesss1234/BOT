@@ -23,7 +23,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode(getLINEProfile($url1))]]
+            'messages' => [['type' => 'text', 'text' => json_encode(getLINEProfile($url1, $POST_HEADER))]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -52,7 +52,7 @@ function send_reply_message($url, $post_header, $post_body)
 
     return $result;
 }
-function getLINEProfile($url12)
+function getLINEProfile($url12,$post_header)
 	{
 		$ch = curl_init($url12);		
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);

@@ -3,14 +3,14 @@
 	// ini_set('display_startup_errors', 1);
 	// error_reporting(E_ALL);
 
-	require __DIR__ . '/vendor/autoload.php';
+	//require __DIR__ . '/vendor/autoload.php';
 
 	/*Get Data From POST Http Request*/
 	$datas = file_get_contents('php://input');
 	/*Decode Json From LINE Data Body*/
 	$deCode = json_decode($datas,true);
 
-	file_put_contents('log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
+	
 
 	$replyToken = $deCode['events'][0]['replyToken'];
 	$userId = $deCode['events'][0]['source']['userId'];

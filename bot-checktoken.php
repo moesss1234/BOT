@@ -1,6 +1,6 @@
 <?php
 
-
+$userId = $request_array['events'][0]['source']['userId'];
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = '3r2ohGof69ms4hYeSENpaK8E8fBgGV42UkS/a/gzGc88hTHOpNw5+1E3QkAD4E+ENudqYyIIepXAaPZu1pzPcA82PVd0nSyQGA/TQZcAF4BIZt6i8Nhnqp0Uvc9IzqSyg07kI82CK5yUTktOrq6f2AdB04t89/1O/w1cDnyilFU='; 
 $channelSecret = '7bde955df2a0b989334fd1dcab6c8aee';
@@ -23,7 +23,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode(getLINEProfile($url1, $POST_HEADER))]]
+            'messages' => [['type' => 'text', 'text' => json_encode($userId)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 

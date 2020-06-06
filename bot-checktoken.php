@@ -7,6 +7,7 @@ $channelSecret = '7bde955df2a0b989334fd1dcab6c8aee';
 $url_content='https://api.line.me/v2/bot/message/”.$msg_id.”/content';
 $url1 = "https://api.line.me/v2/bot/profile/".$userId;
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
+$POST_HEADER1 = array('cache-control: no-cache', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
@@ -20,10 +21,11 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
 
-
+        $results = getLINEProfile($url1, $POST_HEADER1);
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($userId)]]
+            
+            'messages' => [['type' => 'text', 'text' => json_encode($results)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 

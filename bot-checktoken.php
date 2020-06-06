@@ -52,9 +52,9 @@ function send_reply_message($url, $post_header, $post_body)
 
     return $result;
 }
-function getLINEProfile($datas)
+function getLINEProfile($url12)
 	{
-		$ch = curl_init($url1);		
+		$ch = curl_init($url12);		
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);

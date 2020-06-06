@@ -22,10 +22,11 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
 
         $results = getLINEProfile($url1, $POST_HEADER1);
+        $results1 = json_decode($results, true);
         $data = [
             'replyToken' => $reply_token,
             
-            'messages' => [['type' => 'text', 'text' => json_encode($results)]]
+            'messages' => [['type' => 'text', 'text' => json_encode($results1['displayName'])]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 

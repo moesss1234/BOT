@@ -14,6 +14,7 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 $userId = $request_array['events'][0]['source']['userId'];
 
 
+
 if ( sizeof($request_array['events']) > 0 ) {
 
     foreach ($request_array['events'] as $event) {
@@ -21,11 +22,12 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $results = getLINEProfile($url1, $POST_HEADER1);
+        $text = $results['events'][0]['message']['displayName'];
         
         $data = [
             'replyToken' => $reply_token,
             
-            'messages' => [['type' => 'text', 'text' => json_encode($results['message'])]]
+            'messages' => [['type' => 'text', 'text' => json_encode($text)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 

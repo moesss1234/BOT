@@ -25,7 +25,7 @@
 
   	$LINEUserProfile = json_decode($resultsLineProfile['message'],true);
   	$displayName = $LINEUserProfile['displayName'];
-
+	  echo"200";
 	/*
 	 * We need to get a Google_Client object first to handle auth and api calls, etc.
 	 */
@@ -35,7 +35,7 @@
     $client->setAuthConfig(__DIR__.'/bottest-279517-0dc2d7773a37.json');
     $client->setAccessType('offline');
     // $client->setPrompt('select_account consent');
-	echo"200";
+	
     $service = new \Google_Service_Sheets($client);
 
     $spreadsheetId = "1bXbuhVlI11loKILLnIFS3efGds8WMEhYqR5STpyyKxg";

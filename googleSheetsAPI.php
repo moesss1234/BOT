@@ -25,7 +25,7 @@
 
   	$LINEUserProfile = json_decode($resultsLineProfile['message'],true);
   	$displayName = $LINEUserProfile['displayName'];
-
+echo"200";
 	/*
 	 * We need to get a Google_Client object first to handle auth and api calls, etc.
 	 */

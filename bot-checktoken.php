@@ -6,6 +6,7 @@ $ACCESS_TOKEN = '3r2ohGof69ms4hYeSENpaK8E8fBgGV42UkS/a/gzGc88hTHOpNw5+1E3QkAD4E+
 $channelSecret = '7bde955df2a0b989334fd1dcab6c8aee';
 $url_content='https://api.line.me/v2/bot/message/”.$msg_id.”/content';
 $url1 = "https://api.line.me/v2/bot/profile/".$userId;
+$url2='https://api.line.me/v2/bot/message/”.$msg_id.”/content';
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $POST_HEADER1 = array('cache-control: no-cache', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
@@ -70,4 +71,29 @@ function getLINEProfile($url1,$post_header)
 
     return $result1;
 }
+//function getimage()
+//{
+        
+       // $headers = array(‘Authorization: Bearer ‘ . $strAccessToken);
+       // $ch = curl_init($url_content);
+       // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      //  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+       // $data =curl_exec($ch);
+//curl_close($ch);
+      //  $fp = ‘img_file/’.$msg_id.’.png’;
+      //  $url_img=”http://103.40.151.6/line_bot_gts_issue/”.$fp;
+      //  file_put_contents( $fp, $data );
+//}
+echo "200";
+    $client = new \Google_Client();
+    $client->setApplicationName('Google Sheets API PHP Quickstart');
+    $client->setScopes(\Google_Service_Sheets::SPREADSHEETS);
+    $client->setAuthConfig(__DIR__.'/bottest-279517-0dc2d7773a37.json');
+    $client->setAccessType('offline');
+    // $client->setPrompt('select_account consent');
+	
+    $service = new \Google_Service_Sheets($client);
+
+    $spreadsheetId = "1bXbuhVlI11loKILLnIFS3efGds8WMEhYqR5STpyyKxg";
 ?>
